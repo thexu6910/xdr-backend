@@ -1,4 +1,6 @@
 flask
 flask-cors
-gunicorn
+numpy
+matplotlib
+zhipuai
 python-dotenv
