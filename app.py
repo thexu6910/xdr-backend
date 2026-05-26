@@ -3,6 +3,8 @@ from flask_cors import CORS
 import json
 import os
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # 强制使用无界面后端，解决 PythonAnywhere 报错
 import matplotlib.pyplot as plt
 import time
 import re
