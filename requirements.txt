@@ -4,3 +4,4 @@ numpy
 matplotlib
 zhipuai
 python-dotenv
+flask-limiter  # 新增：接口限流依赖
