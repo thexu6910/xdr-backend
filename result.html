@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>XRD 结果</title>
+    <style>
+        body{background:#f5f7fa;padding:30px;font-family:'Microsoft YaHei',sans-serif}
+        .card{max-width:1000px;margin:auto;background:white;padding:30px;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.1)}
+        .img-container{margin:20px 0}
+        .img-label{font-size:16px;font-weight:bold;margin-bottom:10px;padding:8px 16px;border-radius:8px;display:inline-block}
+        .label-standard{background:#e3f2fd;color:#1976d2}
+        .label-ai{background:#ffebee;color:#c62828}
+        img{width:100%;border-radius:12px;margin:10px 0;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+        .params{background:#f8f9fa;padding:20px;border-radius:12px;margin:20px 0}
+        .params h4{margin-top:0;color:#333}
+        .params p{margin:8px 0;color:#555}
+        .back{padding:12px 24px;background:#007bff;color:white;border:none;border-radius:8px;cursor:pointer;font-size:16px;margin-top:20px}
+        .back:hover{background:#0056b3}
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>✅ 标准图谱 VS AI生成图谱</h2>
+
+        <div class="img-container">
+            <div class="img-label label-standard">📊 标准图谱</div>
+            <img id="standardImg" alt="标准XRD图谱">
+        </div>
+
+        <div class="img-container">
+            <div class="img-label label-ai">🤖 AI生成图谱</div>
+            <img id="aiImg" alt="AI生成XRD图谱">
+        </div>
+
+        <div class="params">
+            <h4>📋 生成参数</h4>
+            <div id="paramsInfo"></div>
+        </div>
+
+        <!-- 修改为相对路径 index.html -->
+        <button class="back" onclick="location.href='index.html'">返回重新生成</button>
+    </div>
+
+    <script>
+    // 修改接口请求为相对路径 /api/get-result
+    fetch("/api/get-result")
+    .then(res => res.json())
+    .then(data => {
+        if (data.image_standard) {
+            // 图片路径改为相对路径（拼接根路径）
+            document.getElementById("standardImg").src = "/" + data.image_standard;
+        }
+        if (data.image_ai) {
+            // 图片路径改为相对路径（拼接根路径）
+            document.getElementById("aiImg").src = "/" + data.image_ai;
+        }
+        const info = document.getElementById("paramsInfo");
+        for (let key in data.params) {
+            info.innerHTML += `<p><strong>${key}：</strong>${data.params[key]}</p>`;
+        }
+    })
+    .catch(err => {
+        alert("结果加载失败");
+        console.log(err);
+    });
+    </script>
+</body>
+</html>

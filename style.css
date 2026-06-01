@@ -1,0 +1,74 @@
+body {
+    background: #f5f7fa;
+    font-family: Arial;
+    padding: 20px;
+}
+.container {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+}
+.templates {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+.templates button {
+    padding: 10px 16px;
+    border: 1px solid #007bff;
+    background: #e3f2fd;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.form-item {
+    margin-bottom: 16px;
+}
+.form-item label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+.form-item input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+.param-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.param-row input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+.param-row button {
+    width: 44px;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+.add-btn {
+    width: 100%;
+    padding: 12px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+.gen-btn {
+    width: 100%;
+    padding: 14px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
