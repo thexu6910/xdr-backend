@@ -21,6 +21,9 @@ import shutil
 # ==================== 配置加载与初始化 ====================
 load_dotenv()
 
+# 配置SECRET_KEY（优先从.env读取，没有则自动生成）
+SECRET_KEY = os.getenv("SECRET_KEY", uuid.uuid4().hex)
+
 # 日志配置（增加请求ID和详细上下文）
 logging.basicConfig(
     level=logging.INFO,
@@ -47,7 +50,7 @@ if not ZHIPU_API_KEY:
 # ==================== 应用初始化 ====================
 app = Flask(__name__)
 # 启用Session（用于存储用户唯一结果ID）
-app.secret_key = os.getenv("SECRET_KEY", str(uuid.uuid4()))  # 生产环境务必配置SECRET_KEY
+app.config['SECRET_KEY'] = SECRET_KEY  # 给Flask配置密钥
 CORS(app, supports_credentials=True)  # 允许跨域携带Cookie
 
 # 接口限流（防止恶意请求）
